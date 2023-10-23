@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 
 function Header() {
@@ -21,7 +22,7 @@ function Header() {
       <RightMenu>
         <a href="#">Shop</a>
         <a href="#">Tesla Account</a>
-        <CustonMenu
+        <CustonMenu icon={faBars}
           onClick={() => {
             setStatus(true);
           }}
@@ -29,7 +30,7 @@ function Header() {
       </RightMenu>
       <BurgerNav show={status}>
         <Wrapper>
-          <CustomClose
+          <CustomClose icon={faXmark}
             onClick={() => {
               setStatus(false);
             }}
@@ -95,7 +96,7 @@ const RightMenu = styled.div`
   }
 `;
 
-const CustonMenu = styled(MenuIcon)`
+const CustonMenu = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 const BurgerNav = styled.div`
@@ -122,7 +123,7 @@ const BurgerNav = styled.div`
   }
 `;
 
-const CustomClose = styled(CloseIcon)`
+const CustomClose = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 

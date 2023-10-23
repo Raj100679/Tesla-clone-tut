@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Fade } from "react-reveal";
+import { Fade } from "react-awesome-reveal";
 
 function Section(props) {
   return (
