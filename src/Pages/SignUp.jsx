@@ -6,9 +6,11 @@ function SignUp() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassWord] = useState("");
+  const [messages,setMessages]=useState("");
   const handleSubmit = async (e) => {
-    console.log("HELLo");
     e.preventDefault();
+    console.log("HELLo");
+    
     let result = await fetch("http://localhost:4000/register", {
       method: "post",
       body: JSON.stringify({ username, password, email }),
@@ -17,11 +19,14 @@ function SignUp() {
       },
     });
     result = await result.json();
-    if (result) {
-      console.log("Regsitered Successfullt");
+    if (result.status==200) {
+      setMessages(result["messages"]);
+      console.log("Regsitered Successfully");
       setEmail("");
       setPassWord("");
       setUserName("");
+    } else {
+      setMessages(result["message"]);
     }
   };
   return (
@@ -47,6 +52,7 @@ function SignUp() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <button onClick={handleSubmit}>Submit</button>
+        <h1>{messages}</h1>
       </IForm>
     </>
   );
