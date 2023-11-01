@@ -149,7 +149,7 @@ const SP = styled.p`
   padding: 10px 0;
 `;
 const SH1 = styled.h1`
-  padding: 9px 0;
+  padding:12px 0;
   font-family: "Montserrat", sans-serif;
 `;
 const IForm = styled.form`
