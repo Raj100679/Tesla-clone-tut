@@ -7,11 +7,12 @@ import {
   useParams,
   useMatch,
 } from "react-router-dom";
+import Region from "../SmallComponents/Region";
+import LanguageDropdown from "../SmallComponents/LanguageDropdown";
+import SignUp1 from "./SignUp1";
 
 function SignUp() {
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassWord] = useState("");
+  
   const [messages, setMessages] = useState("");
   const navigate = useNavigate();
   const handleLoginClick = () => {
@@ -53,57 +54,12 @@ function SignUp() {
       setUserName("");
     }
   };
+ 
   return (
     <>
-      <Header></Header>
-
-      <IForm>
-        <SP>Step 1 of 2</SP>
-
-        <SH1>Create Account</SH1>
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassWord(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Submit</button>
-        <p>
-          Already a User? <a onClick={handleLoginClick}>Log In</a>
-        </p>
-        <h1>{messages}</h1>
-      </IForm>
+      <SignUp1/>
     </>
   );
 }
-const SP = styled.p`
-  font-size: 12px;
-  color: grey;
-  font-family: "Montserrat", sans-serif;
-`;
-const SH1 = styled.h1`
-  padding: 9px 0;
 
-  font-family: "Montserrat", sans-serif;
-`;
-const IForm = styled.div`
-  padding-top: 100px;
-  padding-left: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-`;
 export default SignUp;

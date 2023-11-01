@@ -110,7 +110,7 @@ app.get("/login", (req, res) => {});
 app.post("/login", async (req, res) => {
   try {
     let { username, password } = req.body;
-    let user = await User.findOne({ username }); 
+    let user = await User.findOne({ username });
 
     if (!user) {
       return res.status(400).json({
@@ -130,6 +130,5 @@ app.post("/login", async (req, res) => {
     console.error("Validation error:", error);
     return res.status(500).json({ message: "Something went wrong! Try Again" });
   }
-
- 
 });
+
