@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Region from "../SmallComponents/Region";
 import LanguageDropdown from "../SmallComponents/LanguageDropdown";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo} from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 function SignUp1() {
   const [formData, setFormData] = useState({
@@ -16,6 +15,7 @@ function SignUp1() {
   });
   const isSubmitDisabled = !(formData.firstName && formData.lastName);
   const [changePage, setChangePage] = useState(true);
+  const [checked, setChecked] = useState(false);
   const styleselect = {
     width: "300px",
     height: "35px",
@@ -48,6 +48,12 @@ function SignUp1() {
     fontSize: "13px",
     color: "white",
     cursor: "not-allowed",
+  };
+  const stylebox = {
+    width: "20px",
+    height: "20px",
+    backgroundColor: "#7393B3",
+    cursor: "pointer",
   };
 
   const handleSubmit = (e) => {
@@ -119,7 +125,10 @@ function SignUp1() {
           />
           <Sdiv>
             <SP>Password</SP>
-            <FontAwesomeIcon icon={faCircleInfo}/>
+            <FontAwesomeIcon
+              icon={faCircleInfo}
+              style={{ paddingLeft: "4px" }}
+            />
           </Sdiv>
           <input
             type="password"
@@ -128,7 +137,6 @@ function SignUp1() {
               setFormData({ ...formData, password: e.target.value });
             }}
           />
-
           <SP>Confirm Password</SP>
           <input
             type="password"
@@ -137,6 +145,17 @@ function SignUp1() {
               setFormData({ ...formData, confirmpassword: e.target.value });
             }}
           />
+          <Sdiv>
+            <input
+              type="checkbox"
+              onClick={() => {
+                setChecked(!checked);
+              }}
+              checked={checked}
+              style={stylebox}
+            />
+            <SP>Get Tesla Update's</SP>
+          </Sdiv>
         </IForm>
       )}
     </>
@@ -149,7 +168,7 @@ const SP = styled.p`
   padding: 10px 0;
 `;
 const SH1 = styled.h1`
-  padding:12px 0;
+  padding: 10px 0;
   font-family: "Montserrat", sans-serif;
 `;
 const IForm = styled.form`
@@ -177,10 +196,10 @@ const Sa = styled.a`
   letterspacing: 2px;
   text-decoration: underline;
 `;
-const Sdiv=styled.div`
-  display:flex;
-  justify-content:center;
-  align-items:center;
-`
+const Sdiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default SignUp1;
